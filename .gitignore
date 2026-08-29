@@ -1,0 +1,20 @@
+# Apache NetBeans
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+
+# Ant / NetBeans generated files
+build/
+nbbuild/
+dist/
+nbdist/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db

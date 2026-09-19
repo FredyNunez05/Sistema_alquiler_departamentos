@@ -4,6 +4,8 @@
  */
 package sistema_alquiler_departamentos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author USER
@@ -71,4 +73,35 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    // Sobrecarga de métodos
+    public String mostrarDatos() {
+    return nombres + " " + apellidos;
+    }
+
+    public String mostrarDatos(boolean incluirDocumento) {
+    if (incluirDocumento) {
+        return nombres + " " + apellidos + " - " + nroDocumento;
+    } else {
+        return nombres + " " + apellidos;
+    }
+  }
+    // Manejo de errores
+    public void establecerTelefono(String nuevoTelefono) {
+    try {
+        if (nuevoTelefono.length() != 9) {
+            throw new Exception("El teléfono debe tener 9 dígitos.");
+        }
+
+        telefono = nuevoTelefono;
+        System.out.println("Teléfono registrado correctamente.");
+
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+  }
+    // Colecciones
+     public static void agregarUsuario(ArrayList<Usuario> lista, Usuario usuario) {
+    lista.add(usuario);
+   }
 }

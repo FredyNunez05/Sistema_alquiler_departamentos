@@ -4,6 +4,8 @@
  */
 package sistema_alquiler_departamentos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author LENOVO
@@ -93,5 +95,53 @@ public class Departamento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    // SOBRECARGA DE MÉTODOS
+
+    public String mostrarDatos() {
+        return "Departamento N° " + nroDpto
+                + " - Piso: " + piso
+                + " - Precio: S/ " + precioMensual;
+    }
+    public String mostrarDatos(boolean incluirDescripcion) {
+        if (incluirDescripcion) {
+            return mostrarDatos()
+                    + " - Descripción: " + descripcion;
+        }
+        return mostrarDatos();
+    }
+    // CAMBIO DE ESTADO DEL DEPARTAMENTO
+    public void cambiarEstado(String nuevoEstado) {
+        estado = nuevoEstado;
+    }
+    // MANEJO DE ERRORES CON TRY-CATCH
+    public void establecerPrecio(String nuevoPrecio) {
+        try {
+            double precio = Double.parseDouble(nuevoPrecio);
+            if (precio <= 0) {
+                throw new Exception(
+                        "El precio debe ser mayor que cero."
+                );
+            }
+            precioMensual = precio;
+
+            System.out.println(
+                    "Precio registrado correctamente."
+            );
+        } catch (NumberFormatException e) {
+            System.out.println(
+                    "Error: debe ingresar un precio válido."
+            );
+        } catch (Exception e) {
+            System.out.println(
+                    "Error: " + e.getMessage()
+            );
+        }
+    }
+    //COLECCIONES - ARRAYLIST
+    public static void agregarDepartamento(
+            ArrayList<Departamento> lista,
+            Departamento departamento) {
+        lista.add(departamento);
     }
 }

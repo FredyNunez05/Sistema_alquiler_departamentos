@@ -92,5 +92,36 @@ public class Alquiler {
     public void setPago(Pago pago) {
         this.pago = pago;
     }
+    public double calcularMonto(int meses) {
+        try {
+            if (meses <= 0) {
+                throw new IllegalArgumentException("El número de meses debe ser mayor a cero.");
+            }
+            this.mesesAlquiler = meses;
+            this.monto = meses * 500.0;
+            return this.monto;
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error en el cálculo: " + e.getMessage());
+            return 0.0;
+        }
+    }
+
+    public double calcularMonto(int meses, double descuento) {
+        try {
+            if (meses <= 0) {
+                throw new IllegalArgumentException("El número de meses debe ser mayor a cero.");
+            }
+            if (descuento < 0.0 || descuento > 1.0) {
+                throw new IllegalArgumentException("El descuento debe estar entre 0.0 y 1.0.");
+            }
+            this.mesesAlquiler = meses;
+            double subtotal = meses * 500.0;
+            this.monto = subtotal - (subtotal * descuento);
+            return this.monto;
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error en el cálculo con descuento: " + e.getMessage());
+            return 0.0;
+        }
+    }
     
 }

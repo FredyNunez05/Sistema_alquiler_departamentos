@@ -53,5 +53,6 @@ public class Departamento {
     
     public void mostrarDatos() {
         System.out.println("ID DEL DEPA: " + id + "| Cantidad de habitaciones: " + cant_habitaciones + "| Cantidad de banios: " + cant_banios + "| Metros Cuadrados: " + area_metros + "| Precio: " + precio);
-    }
+        //PRUEBA DE COLABORCIÓN :)
+    } 
 }
